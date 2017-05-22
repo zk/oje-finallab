@@ -2,7 +2,11 @@ int score;
 boolean multiplication,addition,subtraction,division,on,won,lost;
 int[] dividend,divNum,yourAnswerM,yourAnswerA,yourAnswerS,yourAnswerD;
 Problem[] m,a,s,d;
+
+
+
 void setup(){
+  println("setup start");
   size(400,400);
   on=false;
   multiplication=false;
@@ -44,6 +48,26 @@ void setup(){
     winscreen();
   if(lost)
     losescreen();
+
+  println("done setup");
+}
+
+// Added draw function which loops continuously
+void draw() {
+  if(on==false)
+    startscreen();
+  if(multiplication)
+    mscreen();
+  if(addition)
+     ascreen();
+  if(subtraction)
+    sscreen();
+  if(division)
+    dscreen();
+  if(won)
+    winscreen();
+  if(lost)
+    losescreen();
 }
 
 void startscreen(){
@@ -67,7 +91,7 @@ void startscreen(){
   text("Division",3*width/4,4*height/5);
 }
 void mscreen(){
-  yourAnswerM=new int[10]; 
+  yourAnswerM=new int[10];
   background(0,0,255);
   textSize(60);
   textAlign(CENTER);
@@ -139,18 +163,22 @@ void losescreen(){
 void mousePressed(){
   if(on==false){
     if(mouseX>width/8 && mouseX<3*width/8 && mouseY>23*height/40 && mouseY<25*height/40){
+      println("pressed addition");
       on=true;
       addition=true;
     }
     if(mouseX>width/8 && mouseX<3*width/8 && mouseY>31*height/40 && mouseY<33*height/40){
+      println("pressed subtraction");
       on=true;
       subtraction=true;
     }
     if(mouseX>5*width/8 && mouseX<7*width/8 && mouseY>23*height/40 && mouseY<25*height/40){
+      println("pressed multiplication");
       on=true;
       multiplication=true;
     }
     if(mouseX>5*width/8 && mouseX<7*width/8 && mouseY>31*height/40 && mouseY<33*height/40){
+      println("pressed division");
       on=true;
       division=true;
     }
@@ -161,7 +189,9 @@ void mousePressed(){
     }
   }
 }
+
 void keyPressed(){
+  println("kp");
   if(multiplication){
   int i=0;
   while(i<m.length){
@@ -275,15 +305,3 @@ void keyPressed(){
    }
   }
 }
-
-        
- 
-
-  
-  
-  
-    
-    
-
-    
-    
